@@ -1,188 +1,150 @@
-import { ArrowRight, CheckCircle2, Star, Ruler, Shield, Palette, Package, Truck } from "lucide-react";
+import { CheckCircle2, Filter } from "lucide-react";
 import Link from "next/link";
 
-const categories = [
-  {
-    id: "custom-plush",
-    title: "Custom Plush Toys",
-    subtitle: "OEM & ODM Design",
-    description: "Bring your ideas to life with fully custom plush toys. From concept sketches to mass production, we handle the entire process with precision and care.",
-    features: ["Full custom design from artwork", "Low MOQ from 500 pcs", "7-10 day sampling", "OEM & ODM available"],
-    image: "🧸",
-    color: "bg-blue-50 border-blue-100",
-    accent: "text-blue-600",
-    badge: "Most Popular",
-  },
-  {
-    id: "anime-ip",
-    title: "Anime & IP Plush",
-    subtitle: "Licensed Characters",
-    description: "High-quality plush toys based on popular anime, game, and entertainment IPs. Perfect for collectors, events, and retail distribution.",
-    features: ["Accurate character reproduction", "Premium soft fabrics", "Multiple size options", "Retail-ready packaging"],
-    image: "🎮",
-    color: "bg-purple-50 border-purple-100",
-    accent: "text-purple-600",
-    badge: "Trending",
-  },
-  {
-    id: "plush-pillows",
-    title: "Plush Pillows & Cushions",
-    subtitle: "Home & Lifestyle",
-    description: "Decorative and functional plush pillows for home, office, and gifting. Eye-catching designs that stand out on any shelf.",
-    features: ["Custom shapes & prints", "Embroidery & appliqué", "Machine washable options", "Gift-ready packaging"],
-    image: "🛋️",
-    color: "bg-amber-50 border-amber-100",
-    accent: "text-amber-600",
-    badge: "Growing Demand",
-  },
-  {
-    id: "promotional",
-    title: "Promotional Plush Gifts",
-    subtitle: "Branded Merchandise",
-    description: "Custom-branded plush toys for corporate events, trade shows, and marketing campaigns. Memorable giveaways that keep your brand in customers' hands.",
-    features: ["Logo embroidery & printing", "Custom hang tags & labels", "Bulk order discounts", "Fast turnaround available"],
-    image: "🎁",
-    color: "bg-green-50 border-green-100",
-    accent: "text-green-600",
-    badge: "Best Value",
-  },
+const allCategories = [
+  { key: "all", label: "All Products" },
+  { key: "perfume", label: "Perfume & Fragrance" },
+  { key: "makeup", label: "Makeup" },
+  { key: "skincare", label: "Skincare" },
+  { key: "personal-care", label: "Personal Care" },
+  { key: "makeup-tools", label: "Makeup Tools & Accessories" },
+  { key: "press-on-nails", label: "Press on Nails" },
 ];
 
-const productHighlights = [
-  { icon: <Ruler className="w-6 h-6" />, title: "Size Range", desc: "5cm to 200cm, any size customizable" },
-  { icon: <Palette className="w-6 h-6" />, title: "Materials", desc: "Super soft plush, short plush, fleece, organic cotton" },
-  { icon: <Shield className="w-6 h-6" />, title: "Certifications", desc: "EN71, ASTM F963, CPSIA, CCC compliant" },
-  { icon: <Package className="w-6 h-6" />, title: "Packaging", desc: "OPP bag, gift box, custom retail packaging" },
-  { icon: <Truck className="w-6 h-6" />, title: "Lead Time", desc: "7-10 days sampling, 25-35 days production" },
-  { icon: <Star className="w-6 h-6" />, title: "MOQ", desc: "From 500 pcs, flexible for new partners" },
+const productItems = [
+  { name: "Eau de Parfum - Floral Bouquet", cat: "perfume", desc: "Premium 50ml EDP with rose, jasmine & peony notes. Long-lasting 8-12 hour formula.", moq: "500 pcs", emoji: "🌸" },
+  { name: "Eau de Toilette - Fresh Citrus", cat: "perfume", desc: "Refreshing 100ml EDT with bergamot, lemon & green tea. Perfect for daily wear.", moq: "500 pcs", emoji: "🍋" },
+  { name: "Perfume Oil - Oud Collection", cat: "perfume", desc: "Concentrated 12ml rollerball perfume oil. Alcohol-free, long-lasting oriental scent.", moq: "1000 pcs", emoji: "🫧" },
+  { name: "Body Mist - Vanilla Dream", cat: "perfume", desc: "Light 200ml body splash with vanilla & coconut. Perfect for younger demographics.", moq: "1000 pcs", emoji: "💦" },
+  { name: "Men's Cologne - Woody Intense", cat: "perfume", desc: "Bold 100ml men's fragrance with cedar, sandalwood & leather notes.", moq: "500 pcs", emoji: "🌲" },
+  { name: "Unisex Fragrance - Clean Musk", cat: "perfume", desc: "Modern 50ml unisex scent with white musk & linen notes. Gender-neutral positioning.", moq: "500 pcs", emoji: "✨" },
+  { name: "Home Diffuser - Lavender Fields", cat: "perfume", desc: "200ml reed diffuser with natural essential oils. 60-90 day fragrance release.", moq: "500 pcs", emoji: "🏠" },
+  { name: "Scented Candle - Rose Garden", cat: "perfume", desc: "Premium soy wax candle 180g. Clean burn up to 40 hours. Gift-ready packaging.", moq: "1000 pcs", emoji: "🕯️" },
+  { name: "Foundation - Matte Finish", cat: "makeup", desc: "Full coverage liquid foundation with SPF30. Available in 12 shades.", moq: "3000 pcs", emoji: "🪞" },
+  { name: "Lipstick - Velvet Matte", cat: "makeup", desc: "Long-wearing matte lipstick with vitamin E. 20 trendy shades available.", moq: "3000 pcs", emoji: "💋" },
+  { name: "Eyeshadow Palette - Sunset Glow", cat: "makeup", desc: "12-color eyeshadow palette with shimmer & matte finishes. Highly pigmented.", moq: "2000 pcs", emoji: "🎨" },
+  { name: "Mascara - Volume & Length", cat: "makeup", desc: "Smudge-proof mascara with curved brush. 24-hour wear formula.", moq: "5000 pcs", emoji: "👁️" },
 ];
+
+const comingSoonCategories = ["skincare", "personal-care", "makeup-tools", "press-on-nails"];
 
 export default function ProductsPage() {
   return (
     <main className="min-h-screen">
-      <section className="bg-gray-50 pt-32 pb-16 lg:pt-40 lg:pb-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <span className="inline-block bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
-              Our Product Lines
-            </span>
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
-              Premium Plush Toys <br />
-              <span className="text-blue-600">Made Your Way</span>
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed">
-              20+ years of plush toy expertise. From custom designs to licensed characters, 
-              we deliver soft, safe, and sellable plush products for global markets.
+      <section className="relative py-28 bg-gradient-to-br from-primary-light/20 to-white overflow-hidden">
+        <div className="absolute top-10 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="container mx-auto px-5 relative z-10">
+          <div className="text-center">
+            <h1 className="text-[48px] mb-5 text-foreground">Our Products</h1>
+            <p className="text-lg text-text-light max-w-[700px] mx-auto font-light">
+              Explore our complete range of beauty &amp; fragrance products. OEM &amp; ODM services available for all categories.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {categories.map((cat) => (
-              <div
-                key={cat.id}
-                className={`rounded-2xl border p-8 lg:p-10 ${cat.color} hover:shadow-lg transition-shadow relative overflow-hidden`}
+      <section className="py-16">
+        <div className="container mx-auto px-5">
+          <div className="flex flex-wrap gap-3 justify-center mb-16">
+            {allCategories.map((cat) => (
+              <a
+                key={cat.key}
+                href={`#${cat.key}`}
+                className={`px-6 py-2.5 rounded-full text-sm font-medium border transition-all ${
+                  cat.key === "all"
+                    ? "bg-primary text-white border-primary"
+                    : comingSoonCategories.includes(cat.key)
+                    ? "bg-gray-50 text-text-light border-gray-200 cursor-default"
+                    : "bg-white text-foreground border-gray-200 hover:border-primary hover:text-primary"
+                }`}
               >
-                {cat.badge && (
-                  <span className={`absolute top-6 right-6 text-xs font-bold px-3 py-1 rounded-full bg-white shadow-sm ${cat.accent}`}>
-                    {cat.badge}
-                  </span>
+                {cat.label}
+                {comingSoonCategories.includes(cat.key) && (
+                  <span className="ml-1 text-[10px] italic">Coming Soon</span>
                 )}
-                <div className="text-5xl mb-4">{cat.image}</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-1">{cat.title}</h3>
-                <p className={`text-sm font-medium ${cat.accent} mb-3`}>{cat.subtitle}</p>
-                <p className="text-gray-600 mb-6 leading-relaxed">{cat.description}</p>
-                <ul className="space-y-2 mb-8">
-                  {cat.features.map((f, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
-                      <CheckCircle2 size={16} className="text-green-500 shrink-0" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/contact"
-                  className={`inline-flex items-center gap-2 font-semibold ${cat.accent} hover:opacity-80 transition-opacity`}
-                >
-                  Request Quote <ArrowRight size={18} />
-                </Link>
-              </div>
+              </a>
             ))}
           </div>
-        </div>
-      </section>
 
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Product Specifications</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Everything you need to know about our manufacturing capabilities.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {productHighlights.map((item, i) => (
-              <div key={i} className="bg-white rounded-xl p-6 border border-gray-100 hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 mb-4">
-                  {item.icon}
-                </div>
-                <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
-                <p className="text-sm text-gray-600">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-10 text-center">How We Work</h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              {[
-                { step: "01", title: "Inquiry & Design", desc: "Share your idea or artwork. We provide a free design consultation and quote." },
-                { step: "02", title: "Sampling", desc: "We create a physical sample for your approval within 7-10 business days." },
-                { step: "03", title: "Production", desc: "Mass production begins after sample approval. Strict QC at every stage." },
-                { step: "04", title: "Delivery", desc: "Safe packaging and reliable shipping to your door, worldwide." },
-              ].map((s, i) => (
-                <div key={i} className="text-center">
-                  <div className="w-14 h-14 bg-blue-600 text-white rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4">
-                    {s.step}
+          <div id="all" className="mb-20">
+            <h2 className="text-[32px] mb-3 text-foreground">Perfume &amp; Fragrance</h2>
+            <p className="text-text-light mb-10 font-light">Our flagship category — premium fragrances crafted by master perfumers</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {productItems.filter(p => p.cat === "perfume").map((p, i) => (
+                <div key={i} className="bg-white rounded-[20px] overflow-hidden hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] transition-all duration-300 shadow-[0_2px_10px_rgba(254,182,193,0.15)] border border-gray-50">
+                  <div className="aspect-square bg-gradient-to-br from-primary-light/30 to-primary-light/10 flex items-center justify-center text-6xl">
+                    {p.emoji}
                   </div>
-                  <h3 className="font-bold text-gray-900 mb-2">{s.title}</h3>
-                  <p className="text-sm text-gray-600">{s.desc}</p>
+                  <div className="p-6">
+                    <h3 className="text-[15px] font-semibold mb-2 text-foreground" style={{ fontFamily: "'Poppins', sans-serif" }}>{p.name}</h3>
+                    <p className="text-[13px] text-text-light leading-relaxed mb-3">{p.desc}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-[12px] text-primary font-semibold">MOQ: {p.moq}</span>
+                      <Link href="/contact" className="text-[12px] text-primary font-semibold hover:underline">Inquire →</Link>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
+
+          <div id="makeup" className="mb-20">
+            <h2 className="text-[32px] mb-3 text-foreground">Makeup</h2>
+            <p className="text-text-light mb-10 font-light">Professional makeup lines with custom formulation and packaging</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {productItems.filter(p => p.cat === "makeup").map((p, i) => (
+                <div key={i} className="bg-white rounded-[20px] overflow-hidden hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] transition-all duration-300 shadow-[0_2px_10px_rgba(254,182,193,0.15)] border border-gray-50">
+                  <div className="aspect-square bg-gradient-to-br from-primary-light/30 to-primary-light/10 flex items-center justify-center text-6xl">
+                    {p.emoji}
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-[15px] font-semibold mb-2 text-foreground" style={{ fontFamily: "'Poppins', sans-serif" }}>{p.name}</h3>
+                    <p className="text-[13px] text-text-light leading-relaxed mb-3">{p.desc}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-[12px] text-primary font-semibold">MOQ: {p.moq}</span>
+                      <Link href="/contact" className="text-[12px] text-primary font-semibold hover:underline">Inquire →</Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {comingSoonCategories.map((catKey) => {
+            const cat = allCategories.find(c => c.key === catKey);
+            if (!cat) return null;
+            return (
+              <div key={catKey} id={catKey} className="mb-16">
+                <h2 className="text-[32px] mb-3 text-foreground">{cat.label}</h2>
+                <div className="bg-bg-light rounded-[20px] p-16 text-center">
+                  <div className="text-6xl mb-6">🚀</div>
+                  <h3 className="text-2xl mb-3 text-foreground">Coming Soon</h3>
+                  <p className="text-text-light mb-6 max-w-md mx-auto font-light">
+                    Our {cat.label.toLowerCase()} collection is currently under development. Stay tuned for exciting new products!
+                  </p>
+                  <Link
+                    href="/contact"
+                    className="inline-block bg-gradient-to-r from-primary to-primary-dark text-white px-8 py-3 rounded-full text-sm font-semibold hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(254,182,193,0.3)] transition-all"
+                  >
+                    Notify Me When Available
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
-      <section className="py-20 bg-blue-600 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">Have a Plush Toy Idea?</h2>
-          <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
-            Whether it&apos;s a custom design or a bulk order, we&apos;re ready to bring your vision to life. Get a free quote today.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
-            >
-              Get a Free Quote
-            </Link>
-            <a
-              href="https://wa.me/8612345678900"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-600 transition-colors shadow-lg"
-            >
-              Chat on WhatsApp
-            </a>
-          </div>
+      <section className="py-28 bg-gradient-to-r from-primary to-primary-dark text-white text-center">
+        <div className="container mx-auto px-5">
+          <h2 className="text-[44px] mb-5 text-white">Can&apos;t Find What You Need?</h2>
+          <p className="text-xl mb-10 opacity-95 font-light">We offer full custom OEM/ODM services. Tell us your vision and we&apos;ll make it happen.</p>
+          <Link
+            href="/contact"
+            className="inline-block bg-white text-primary px-12 py-4 rounded-full font-semibold text-base hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(0,0,0,0.2)] transition-all"
+          >
+            REQUEST CUSTOM PRODUCT
+          </Link>
         </div>
       </section>
     </main>

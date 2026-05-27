@@ -1,137 +1,131 @@
-import { CheckCircle2, Award, Users, Clock, Heart, Target, Lightbulb, Handshake } from "lucide-react";
+import { CheckCircle2, Award, Users, Globe2, Factory, Heart, Target, Lightbulb } from "lucide-react";
 import Link from "next/link";
 
-const values = [
-  {
-    icon: <Heart className="w-7 h-7" />,
-    title: "Passion for Plush",
-    desc: "20+ years of hands-on experience in the plush toy industry. We don't just manufacture — we live and breathe plush.",
-  },
-  {
-    icon: <Target className="w-7 h-7" />,
-    title: "Client-First Approach",
-    desc: "Your success is our success. We treat every project as if it were our own, with meticulous attention to detail.",
-  },
-  {
-    icon: <Lightbulb className="w-7 h-7" />,
-    title: "Creative Solutions",
-    desc: "From concept to shelf, we bring creative ideas to life. Our design team helps transform rough sketches into market-ready products.",
-  },
-  {
-    icon: <Handshake className="w-7 h-7" />,
-    title: "Transparent Partnership",
-    desc: "No hidden costs, no surprises. We believe in open communication and long-term relationships built on trust.",
-  },
+const milestones = [
+  { year: "2005", event: "Company founded in Guangzhou, China" },
+  { year: "2008", event: "First export order to Middle East market" },
+  { year: "2012", event: "Achieved ISO 22716 certification" },
+  { year: "2015", event: "Expanded to 15,000 sqm production facility" },
+  { year: "2018", event: "GMPC & FDA registration obtained" },
+  { year: "2020", event: "Launched in-house R&D lab with 5000+ formulas" },
+  { year: "2023", event: "Exporting to 80+ countries worldwide" },
+  { year: "2025", event: "SINRORA brand launched for global B2B market" },
 ];
 
-const milestones = [
-  { year: "2005", event: "Founded in Guangzhou, started as a small plush toy workshop" },
-  { year: "2010", event: "Expanded to OEM/ODM services, first international clients" },
-  { year: "2015", event: "Achieved EN71 & ASTM certifications, entered EU & US markets" },
-  { year: "2020", event: "Built dedicated QC team, expanded production capacity by 3x" },
-  { year: "2024", event: "Launched Sinrora brand, serving 30+ countries worldwide" },
+const values = [
+  { icon: <Heart className="w-8 h-8 text-white" />, title: "Passion for Fragrance", desc: "Every scent we create is driven by a deep love for the art of perfumery." },
+  { icon: <Target className="w-8 h-8 text-white" />, title: "Precision & Quality", desc: "Rigorous quality control at every stage ensures consistent excellence." },
+  { icon: <Lightbulb className="w-8 h-8 text-white" />, title: "Innovation First", desc: "We invest in R&D to stay ahead of trends and deliver cutting-edge formulations." },
+  { icon: <Globe2 className="w-8 h-8 text-white" />, title: "Global Partnership", desc: "We build long-term relationships with brands across 80+ countries." },
 ];
 
 const stats = [
   { number: "20+", label: "Years Experience" },
-  { number: "500+", label: "Projects Completed" },
-  { number: "30+", label: "Countries Served" },
-  { number: "98%", label: "Client Satisfaction" },
+  { number: "5000+", label: "Fragrance Formulas" },
+  { number: "80+", label: "Countries Served" },
+  { number: "200+", label: "Skilled Workers" },
 ];
 
 export default function AboutPage() {
   return (
     <main className="min-h-screen">
-      <section className="bg-gray-50 pt-32 pb-16 lg:pt-40 lg:pb-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <span className="inline-block bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
-              About Sinrora
-            </span>
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
-              Two Decades of <br />
-              <span className="text-blue-600">Plush Expertise</span>
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed">
-              Born from a genuine passion for plush toys, Sinrora combines decades of hands-on 
-              industry experience with modern B2B service to deliver exceptional products worldwide.
+      <section className="relative py-28 bg-gradient-to-br from-primary-light/20 to-white overflow-hidden">
+        <div className="absolute top-10 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="container mx-auto px-5 relative z-10">
+          <div className="text-center">
+            <h1 className="text-[48px] mb-5 text-foreground">About SINRORA</h1>
+            <p className="text-lg text-text-light max-w-[700px] mx-auto font-light">
+              Your trusted partner in premium fragrance manufacturing since 2005
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-24">
+        <div className="container mx-auto px-5">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
-              <div className="space-y-4 text-gray-600 leading-relaxed">
-                <p>
-                  Sinrora was founded by someone who has spent over 20 years immersed in the world of 
-                  plush toys — not as a distant executive, but as someone who has been hands-on with 
-                  every stage of the process, from material selection to final stitch.
-                </p>
-                <p>
-                  Based in Guangzhou, the heart of China&apos;s toy manufacturing industry, we have 
-                  deep-rooted relationships with the best material suppliers, skilled craftsmen, and 
-                  efficient logistics networks. This isn&apos;t just a business — it&apos;s a lifelong craft.
-                </p>
-                <p>
-                  We understand that in B2B, trust is everything. That&apos;s why we operate with full 
-                  transparency: factory tours (virtual or in-person), real-time production updates, and 
-                  rigorous quality control at every step. When you work with Sinrora, you work with 
-                  someone who genuinely cares about every plush toy that leaves our workshop.
-                </p>
-              </div>
-              <div className="mt-8">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-                >
-                  Start a Conversation
-                </Link>
-              </div>
+              <h2 className="text-[36px] mb-7 text-foreground">Crafting Scents That Tell Stories</h2>
+              <p className="text-text-light mb-6 leading-relaxed font-light">
+                SINRORA was founded with a singular vision: to help brands around the world create signature fragrances that captivate and endure. With over 20 years of experience in the perfume manufacturing industry, we have grown from a small workshop in Guangzhou to a state-of-the-art facility serving clients in 80+ countries.
+              </p>
+              <p className="text-text-light mb-6 leading-relaxed font-light">
+                Our team of master perfumers combines traditional craftsmanship with modern innovation, using only the finest raw materials sourced from Grasse, India, and other renowned fragrance capitals. Whether you need an inspired interpretation of a classic scent or a completely original composition, we bring your olfactory vision to life.
+              </p>
+              <p className="text-text-light leading-relaxed font-light">
+                We specialize in OEM and ODM services for perfumes, body mists, perfume oils, home fragrances, and a growing range of beauty products. Our commitment to quality, speed, and flexibility has made us the preferred manufacturing partner for brands across the Middle East, Africa, Southeast Asia, Europe, and the Americas.
+              </p>
             </div>
-            <div className="bg-gray-100 rounded-2xl aspect-square flex items-center justify-center">
-              <div className="text-center text-gray-400">
-                <div className="text-6xl mb-4">🏭</div>
-                <p className="text-sm">Founder Photo / Workshop Image</p>
+            <div className="grid grid-cols-2 gap-5">
+              <div className="col-span-2 rounded-[15px] overflow-hidden aspect-[2/1] bg-gradient-to-br from-primary-light/30 to-primary/10 flex items-center justify-center text-6xl">
+                🏭
+              </div>
+              <div className="rounded-[15px] overflow-hidden aspect-square bg-gradient-to-br from-primary-light/20 to-primary-light/5 flex items-center justify-center text-5xl">
+                🧪
+              </div>
+              <div className="rounded-[15px] overflow-hidden aspect-square bg-gradient-to-br from-primary-light/20 to-primary-light/5 flex items-center justify-center text-5xl">
+                👥
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-blue-600 text-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-4xl lg:text-5xl font-bold mb-2">{stat.number}</div>
-                <div className="text-blue-200 text-sm font-medium">{stat.label}</div>
+      <section className="py-20 bg-bg-light">
+        <div className="container mx-auto px-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((s, i) => (
+              <div key={i} className="text-center p-8 bg-white rounded-[20px] shadow-[0_2px_10px_rgba(254,182,193,0.15)]">
+                <div className="text-[42px] font-bold text-primary mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>{s.number}</div>
+                <div className="text-sm text-text-light font-medium">{s.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">What Drives Us</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our core values shape every decision we make and every product we create.
+      <section className="py-24">
+        <div className="container mx-auto px-5">
+          <div className="text-center mb-[70px]">
+            <h2 className="text-[42px] mb-5 text-foreground">Our Values</h2>
+            <p className="text-lg text-text-light max-w-[700px] mx-auto font-light">
+              The principles that guide everything we do
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((v, i) => (
-              <div key={i} className="flex gap-5 p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow">
-                <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center shrink-0">
+              <div key={i} className="text-center p-11 bg-white rounded-[20px] hover:-translate-y-2 hover:shadow-[0_8px_30px_rgba(254,182,193,0.2)] transition-all border border-transparent hover:border-primary-light">
+                <div className="w-20 h-20 bg-gradient-to-br from-primary-light to-primary rounded-full flex items-center justify-center mx-auto mb-6">
                   {v.icon}
                 </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 mb-2 text-lg">{v.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{v.desc}</p>
+                <h3 className="text-xl mb-3 text-foreground" style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 600 }}>{v.title}</h3>
+                <p className="text-sm text-text-light leading-relaxed">{v.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-bg-light">
+        <div className="container mx-auto px-5">
+          <div className="text-center mb-[70px]">
+            <h2 className="text-[42px] mb-5 text-foreground">Our Journey</h2>
+            <p className="text-lg text-text-light max-w-[700px] mx-auto font-light">
+              Two decades of growth, innovation, and global impact
+            </p>
+          </div>
+          <div className="max-w-3xl mx-auto">
+            {milestones.map((m, i) => (
+              <div key={i} className="flex gap-6 mb-8 last:mb-0">
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark text-white rounded-full flex items-center justify-center text-sm font-bold shrink-0">
+                    {m.year.slice(2)}
+                  </div>
+                  {i < milestones.length - 1 && <div className="w-0.5 flex-1 bg-primary-light mt-2"></div>}
+                </div>
+                <div className="pt-2.5 pb-6">
+                  <div className="text-sm font-bold text-primary mb-1">{m.year}</div>
+                  <div className="text-base text-foreground">{m.event}</div>
                 </div>
               </div>
             ))}
@@ -139,78 +133,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-10 text-center">Our Journey</h2>
-            <div className="relative">
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-blue-200"></div>
-              <div className="space-y-10">
-                {milestones.map((m, i) => (
-                  <div key={i} className="relative flex gap-6 items-start">
-                    <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold shrink-0 z-10">
-                      {m.year}
-                    </div>
-                    <div className="pt-4">
-                      <p className="text-gray-700 leading-relaxed">{m.event}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto bg-gray-50 rounded-3xl p-10 lg:p-14 border border-gray-100">
-            <div className="flex flex-col lg:flex-row gap-10 items-center">
-              <div className="lg:w-2/3">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Work With a Specialist?</h2>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  The plush toy industry has its own unique challenges — fabric quality, stuffing consistency, 
-                  safety compliance, and design fidelity. General trading companies can&apos;t match the depth 
-                  of knowledge that comes from 20 years of specialized experience.
-                </p>
-                <ul className="space-y-3">
-                  {[
-                    "Deep understanding of plush materials and construction techniques",
-                    "Established relationships with certified fabric and stuffing suppliers",
-                    "Knowledge of international safety standards (EN71, ASTM, CPSIA)",
-                    "Ability to spot and solve quality issues before they become problems",
-                    "Faster sampling and more accurate cost estimation",
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 text-gray-700">
-                      <CheckCircle2 size={20} className="text-green-500 shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="lg:w-1/3 text-center">
-                <div className="w-32 h-32 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Award className="w-16 h-16 text-blue-600" />
-                </div>
-                <p className="text-sm text-gray-500">Industry Specialist</p>
-                <p className="text-2xl font-bold text-gray-900">20+ Years</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-blue-600 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">Let&apos;s Build Something Together</h2>
-          <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
-            Whether you&apos;re launching a new plush brand or need a reliable manufacturing partner, we&apos;re here to help.
-          </p>
+      <section className="py-28 bg-gradient-to-r from-primary to-primary-dark text-white text-center">
+        <div className="container mx-auto px-5">
+          <h2 className="text-[44px] mb-5 text-white">Ready to Partner With Us?</h2>
+          <p className="text-xl mb-10 opacity-95 font-light">Join 500+ brands worldwide who trust SINRORA for their fragrance needs</p>
           <Link
             href="/contact"
-            className="inline-block bg-white text-blue-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
+            className="inline-block bg-white text-primary px-12 py-4 rounded-full font-semibold text-base hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(0,0,0,0.2)] transition-all"
           >
-            Get in Touch
+            GET IN TOUCH
           </Link>
         </div>
       </section>

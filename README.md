@@ -451,6 +451,65 @@ git push
 
 ---
 
+### ⚠️ 实战踩坑记录：`output: "export"` vs `output: "standalone"`
+
+这是新手部署时最容易踩的坑之一，因此专门记录下来。
+
+#### 先看 next.config.mjs 的核心配置
+
+```js
+// ✅ Cloudflare Pages 部署：必须用 "export"
+output: "export"
+
+// ❌ 不要写成 "standalone"
+output: "standalone"   // 这是给 Docker / VPS 自托管用的
+```
+
+#### 为什么不能混淆？
+
+这两个模式输出的是 **完全不同的东西**：
+
+| 模式 | 输出目录 | 输出内容 | 需要什么来运行？ | 适用平台 |
+|------|---------|---------|----------------|---------|
+| `output: "export"` | `out/` | 纯静态 HTML/CSS/JS 文件 | **什么都不需要**，直接扔 CDN 就能跑 | Cloudflare Pages, GitHub Pages, 阿里云 OSS, S3... |
+| `output: "standalone"` | `.next/standalone/` | 自包含的 Node.js 服务器包 | **需要一台服务器**运行 `node server.js` | Docker, VPS, AWS EC2, 自己租的服务器 |
+
+**`export`**：把你的网站"编译"成一本打印好的书。用户读的是成品，瞬间打开。
+
+**`standalone`**：把整个打印机打包进一个行李箱。你需要一台机器先把打印机打开，才能开始印书给别人看。
+
+#### Cloudflare Pages 上发生了什么
+
+当你配置 `output: "standalone"` 并推送到 Cloudflare Pages：
+
+```
+① git push（触发自动构建）
+② Cloudflare 执行 npm run build
+③ Next.js 生成 .next/standalone/（包含 Node.js 服务器代码）
+④ Cloudflare Pages 寻找 out/ 目录 ← ❌ 找不到！
+⑤ 构建失败（报错：输出目录 out 不存在）
+```
+
+因为 Cloudflare Pages 是 **静态文件 CDN**，它期待的是一堆 `.html` 文件，而不是一个 Node.js 服务端软件。
+
+#### 什么场景才用 standalone？
+
+| 场景 | 用哪个？ | 理由 |
+|------|---------|------|
+| Cloudflare Pages | `export` | 纯静态托管，不上服务器 |
+| GitHub Pages | `export` | 也是纯静态托管 |
+| Docker 部署到 VPS | `standalone` | 自己租了服务器，想跑 Next.js 完整功能 |
+| 需要 SSR/API 路由 | `standalone` | 需要服务端渲染和 API 接口 |
+| 永远不需要服务端 | `export` | 没服务器 = 零漏洞、零维护、零成本 |
+
+#### 一句话总结
+
+> 用 **Cloudflare Pages** 托管 → 用 `output: "export"`（静态文件）
+> 用 **Docker/VPS** 自托管 → 用 `output: "standalone"`（服务端程序）
+> **把两个弄混了，构建就会失败。**
+
+---
+
 ### 🛡️ 第四章：免费附加功能（全部零成本）
 
 以下功能全是 Cloudflare 免费提供的，不需要额外付费：

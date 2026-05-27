@@ -4,8 +4,9 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Sinrora | Premium Plush Toy Manufacturer & B2B Partner",
-  description: "20+ years of plush toy expertise. Custom plush toys, anime IP plush, plush pillows, and promotional gifts. OEM/ODM, EN71 & ASTM certified. Based in Guangzhou, China.",
+  title: "SINRORA | Premium Perfume OEM & Custom Fragrance Manufacturer",
+  description:
+    "Professional Perfume OEM/ODM Manufacturer - Custom Fragrance Manufacturing for Bold Brands. Original Inspired Scents with Low MOQ and Fast Sampling.",
 };
 
 export default function RootLayout({

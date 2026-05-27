@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional Perfume OEM/ODM Manufacturer - Custom Fragrance Manufacturing for Bold Brands. Original Inspired Scents with Low MOQ and Fast Sampling.">
+    <title>SINRORA | Premium Perfume OEM & Custom Fragrance Manufacturer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #feb6c1;
+            --primary-dark: #e895a0;
+            --primary-light: #ffd4dc;
+            --secondary: #2d2d2d;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+            --bg-light: #fafafa;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #feb6c1 0%, #f4a8b5 100%);
+            --shadow-sm: 0 2px 10px rgba(254, 182, 193, 0.15);
+            --shadow-md: 0 8px 30px rgba(254, 182, 193, 0.2);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--white);
+            border-bottom: 1px solid #f0f0f0;
+            padding: 10px 0;
+            font-size: 13px;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            margin-right: 18px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 25px;
+            color: var(--text-light);
+        }
+
+        .contact-info a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary);
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--white) !important;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            overflow: hidden;
+        }
+
+        .hero-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(255,240,243,0.88) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .hero-title {
+            font-size: 58px;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--text-light);
+            margin-bottom: 35px;
+            font-weight: 300;
+        }
+
+        .hero-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .hero-features li {
+            padding: 10px 0;
+            font-size: 17px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .hero-features li i {
+            color: var(--primary);
+            margin-right: 12px;
+            font-size: 14px;
+        }
+
+        .btn-hero {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            letter-spacing: 0.5px;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(254, 182, 193, 0.4);
+        }
+
+        /* Carousel Dots */
+        .carousel-dots {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            gap: 12px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(254, 182, 193, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active,
+        .carousel-dot:hover {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 90px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Products Section */
+        .products-section {
+            background: var(--bg-light);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe8ed 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: var(--primary-light);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-name {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .product-desc {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Categories Section */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .category-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 400px;
+            cursor: pointer;
+        }
+
+        .category-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .category-card:hover .category-img {
+            transform: scale(1.08);
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+            color: var(--white);
+        }
+
+        .category-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .btn-category {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-category:hover {
+            background: var(--primary-dark);
+            transform: translateX(5px);
+        }
+
+        /* Why Choose Us */
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 45px 30px;
+            background: var(--white);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid #f5f5f5;
+        }
+
+        .why-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+
+        .why-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 32px;
+            color: var(--white);
+        }
+
+        .why-title {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .why-desc {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Process Section */
+        .process-section {
+            background: var(--bg-light);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            position: relative;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 22px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .step-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .step-desc {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Factory Showcase */
+        .factory-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .factory-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .factory-img {
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        }
+
+        .factory-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .factory-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .factory-img:first-child {
+            grid-column: span 2;
+            aspect-ratio: 2/1;
+        }
+
+        .factory-info h3 {
+            font-size: 36px;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+
+        .factory-features {
+            list-style: none;
+        }
+
+        .factory-features li {
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .factory-features li i {
+            color: var(--primary);
+            margin-right: 15px;
+            font-size: 18px;
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .cert-item {
+            text-align: center;
+            padding: 30px 40px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+            min-width: 180px;
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .cert-icon {
+            font-size: 42px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .cert-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-primary);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-title {
+            font-size: 44px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .cta-subtitle {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .btn-white {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary);
+            padding: 16px 45px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-form h3 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(254, 182, 193, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-details h3 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .contact-item i {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .contact-item-text h4 {
+            font-size: 17px;
+            margin-bottom: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .contact-item-text p {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        /* Floating Buttons */
+        .floating-buttons {
+            position: fixed;
+            right: 25px;
+            bottom: 120px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .float-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 22px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .float-btn.whatsapp {
+            background: #25D366;
+        }
+
+        .float-btn.email {
+            background: var(--primary);
+        }
+
+        .float-btn.top {
+            background: #888;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .footer-about p {
+            color: #aaa;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 25px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 25px;
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .why-us-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .process-steps {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                display: none;
+            }
+            .nav-menu {
+                display: none;
+            }
+            .hero-title {
+                font-size: 38px;
+            }
+            .section-title {
+                font-size: 32px;
+            }
+            .products-grid,
+            .categories-grid,
+            .why-us-grid {
+                grid-template-columns: 1fr;
+            }
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            .factory-showcase,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="social-links">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+                <div class="contact-info">
+                    <a href="mailto:info@sinrora.com"><i class="far fa-envelope"></i> info@sinrora.com</a>
+                    <a href="tel:+8612345678900"><i class="fas fa-phone"></i> +86 123 4567 8900</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">SINRORA</div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#customize">How To Customize</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#quote" class="btn-primary">Get FREE Quote</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <!-- TODO: 替换为你的工厂视频或香水生产视频 -->
+        <video class="hero-video-bg" autoplay muted loop playsinline poster="">
+            <source src="assets/videos/factory-hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="hero-text animate-fadeInUp">
+                <h1 class="hero-title">Unveil the Aroma</h1>
+                <p class="hero-subtitle">Premium Perfume OEM & ODM Solutions for Bold Brands Worldwide</p>
+                <ul class="hero-features">
+                    <li><i class="fas fa-check-circle"></i> For Bold Brands</li>
+                    <li><i class="fas fa-check-circle"></i> Original Inspired Scents</li>
+                    <li><i class="fas fa-check-circle"></i> Custom Fragrance Manufacturing</li>
+                </ul>
+                <a href="#products" class="btn-hero">DISCOVER YOUR SCENT</a>
+            </div>
+        </div>
+        <div class="carousel-dots">
+            <span class="carousel-dot active"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Perfume Collection</h2>
+                <p class="section-subtitle">From classic florals to modern orientals, we craft fragrances that captivate and endure.</p>
+            </div>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <!-- TODO: 替换产品图片 -->
+                        <img src="assets/images/perfume-women-floral.jpg" alt="Women's Floral Perfume">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Women's Floral Collection</h3>
+                        <p class="product-desc">Elegant floral bouquets with lasting allure. Rose, Jasmine, Peony blends.</p>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assets/images/perfume-men-woody.jpg" alt="Men's Woody Fragrance">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Men's Woody Fragrances</h3>
+                        <p class="product-desc">Bold woody notes with sophisticated depth. Cedar, Sandalwood, Vetiver.</p>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assets/images/perfume-unisex.jpg" alt="Unisex Collection">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Unisex Collections</h3>
+                        <p class="product-desc">Modern gender-neutral scents for contemporary brands. Clean & minimalist.</p>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assets/images/perfume-luxury.jpg" alt="Luxury Niche Perfume">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Luxury Niche Fragrances</h3>
+                        <p class="product-desc">Exclusive artisanal compositions with rare ingredients. High-end positioning.</p>
+                    </div>
+                </div>
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assets/images/perfume-body-mist.jpg" alt="Body Mist & Splash">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Body Mist & Splash</h3>
+                        <p class="product-desc">Light, refreshing everyday scents. Perfect for younger demographics & retail chains.</p>
+                    </div>
+                </div>
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assets/images/perfume-oil.jpg" alt="Perfume Oil">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Concentrated Perfume Oil</h3>
+                        <p class="product-desc">Long-lasting oil-based formulas. Alcohol-free options available. Halal certified.</p>
+                    </div>
+                </div>
+                <!-- Product 7 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assets/images/perfume-home.jpg" alt="Home Fragrance">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Home Fragrance Line</h3>
+                        <p class="product-desc">Room sprays, diffusers & scented candles. Complete lifestyle fragrance solutions.</p>
+                    </div>
+                </div>
+                <!-- Product 8 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="assets/images/perfume-custom.jpg" alt="Custom Private Label">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Custom Private Label</h3>
+                        <p class="product-desc">Fully bespoke from bottle to scent to packaging. Your brand, your vision.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories">
+        <div class="container">
+            <div class="categories-grid">
+                <div class="category-card">
+                    <!-- TODO: 替换分类大图 -->
+                    <img src="assets/images/cat-perfume.jpg" alt="Perfume OEM" class="category-img">
+                    <div class="category-overlay">
+                        <h3 class="category-title">Perfume OEM</h3>
+                        <a href="#" class="btn-category">GET INSPIRED</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="assets/images/cat-essential.jpg" alt="Essential Oils" class="category-img">
+                    <div class="category-overlay">
+                        <h3 class="category-title">Essential Oils</h3>
+                        <a href="#" class="btn-category">EXPLORE MORE</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="assets/images/cat-packaging.jpg" alt="Custom Packaging" class="category-img">
+                    <div class="category-overlay">
+                        <h3 class="category-title">Custom Packaging</h3>
+                        <a href="#" class="btn-category">VIEW OPTIONS</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="about" style="background: var(--bg-light);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose SINRORA</h2>
+                <p class="section-subtitle">Your trusted partner in perfume manufacturing excellence</p>
+            </div>
+            <div class="why-us-grid">
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-flask"></i></div>
+                    <h3 class="why-title">Expert R&D Team</h3>
+                    <p class="why-desc">Master perfumers with 20+ years experience crafting iconic fragrances for global brands.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-boxes-stacked"></i></div>
+                    <h3 class="why-title">Low MOQ</h3>
+                    <p class="why-desc">Start from as low as 500 pieces per SKU. Perfect for testing new markets & collections.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-clock"></i></div>
+                    <h3 class="why-title">Fast Sampling</h3>
+                    <p class="why-desc">Get your custom samples in just 7-10 days. Speed to market is our priority.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon"><i class="fas fa-certificate"></i></div>
+                    <h3 class="why-title">Certified Quality</h3>
+                    <p class="why-desc">ISO 22716, GMPC, FDA compliant. All products undergo rigorous quality testing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section" id="customize">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How We Work</h2>
+                <p class="section-subtitle">From concept to shelf in 5 simple steps</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <h4 class="step-title">Consultation</h4>
+                    <p class="step-desc">Share your vision, target market & budget requirements</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <h4 class="step-title">Fragrance Development</h4>
+                    <p class="step-desc">Our perfumers create custom scent profiles tailored to your brand</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <h4 class="step-title">Sampling</h4>
+                    <p class="step-desc">Review & refine samples until you're 100% satisfied</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <h4 class="step-title">Production</h4>
+                    <p class="step-desc">Mass production with strict QC at every stage</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">05</div>
+                    <h4 class="step-title">Delivery</h4>
+                    <p class="step-desc">Worldwide shipping with full documentation support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Factory Showcase -->
+    <section>
+        <div class="container">
+            <div class="factory-showcase">
+                <div class="factory-images">
+                    <!-- TODO: 替换工厂实景图 -->
+                    <div class="factory-img">
+                        <img src="assets/images/factory-overview.jpg" alt="Factory Overview">
+                    </div>
+                    <div class="factory-img">
+                        <img src="assets/images/factory-production.jpg" alt="Production Line">
+                    </div>
+                    <div class="factory-img">
+                        <img src="assets/images/factory-lab.jpg" alt="R&D Laboratory">
+                    </div>
+                </div>
+                <div class="factory-info">
+                    <h3>State-of-the-Art Manufacturing Facility</h3>
+                    <ul class="factory-features">
+                        <li><i class="fas fa-industry"></i> 15,000+ sqm modern production facility</li>
+                        <li><i class="fas fa-users"></i> 200+ skilled workers & master perfumers</li>
+                        <li><i class="fas fa-vial"></i> In-house R&D lab with 5000+ fragrance formulas</li>
+                        <li><i class="fas fa-shield-alt"></i> ISO 22716 & GMPC certified factory</li>
+                        <li><i class="fas fa-truck-loading"></i> Daily capacity of 50,000+ bottles</li>
+                        <li><i class="fas fa-globe-asia-australia"></i> Exporting to 80+ countries worldwide</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section style="background: var(--bg-light);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Certifications & Compliance</h2>
+                <p class="section-subtitle">Meeting global standards for safety and quality</p>
+            </div>
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                    <div class="cert-name">ISO 22716</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="cert-name">GMPC</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <div class="cert-name">FDA Registered</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon"><i class="fas fa-leaf"></i></div>
+                    <div class="cert-name">Cruelty-Free</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon"><i class="fas fa-recycle"></i></div>
+                    <div class="cert-name">Eco-Friendly</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon"><i class="fas fa-mosque"></i></div>
+                    <div class="cert-name">Halal Certified</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="quote">
+        <div class="container">
+            <h2 class="cta-title">Ready to Create Your Signature Scent?</h2>
+            <p class="cta-subtitle">Get a free consultation and quote within 24 hours</p>
+            <a href="#contact" class="btn-white">GET YOUR FREE QUOTE NOW</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <h3>Send Us an Inquiry</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Address *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Company Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Phone / WhatsApp">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Tell us about your project... (MOQ, Target Market, etc.)"></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">SEND INQUIRY</button>
+                    </form>
+                </div>
+                <div class="contact-details">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-item-text">
+                            <h4>Factory Address</h4>
+                            <p>No. 88, Beauty Road, Huadu District<br>Guangzhou, China 510800</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-item-text">
+                            <h4>Email Us</h4>
+                            <p>info@sinrora.com<br>sales@sinrora.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div class="contact-item-text">
+                            <h4>WhatsApp / Phone</h4>
+                            <p>+86 138 0013 8000<br>+86 123 4567 8900</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="contact-item-text">
+                            <h4>Working Hours</h4>
+                            <p>Mon - Sat: 9:00 AM - 6:00 PM (CST)<br>Sunday: By Appointment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/8613800138000" target="_blank" class="float-btn whatsapp" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="mailto:info@sinrora.com" class="float-btn email" title="Email Us">
+            <i class="far fa-envelope"></i>
+        </a>
+        <a href="#home" class="float-btn top" title="Back to Top">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">SINRORA</div>
+                    <p>Premium perfume OEM/ODM manufacturer specializing in custom fragrance development, private label production, and complete packaging solutions for beauty brands worldwide.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#customize">How to Customize</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Women's Perfume</a></li>
+                        <li><a href="#">Men's Fragrance</a></li>
+                        <li><a href="#">Unisex Scents</a></li>
+                        <li><a href="#">Body Mist</a></li>
+                        <li><a href="#">Perfume Oil</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@sinrora.com">info@sinrora.com</a></li>
+                        <li><a href="tel:+8613800138000">+86 138 0013 8000</a></li>
+                        <li><a href="#">Guangzhou, China</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SINRORA. All Rights Reserved. | Professional Perfume OEM Manufacturer</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = 'var(--shadow-sm)';
+            }
+        });
+
+        // Carousel dots interaction (placeholder)
+        document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                document.querySelectorAll('.carousel-dot').forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
