@@ -4,12 +4,15 @@
 @theme {
   --color-background: #ffffff;
   --color-foreground: #1a1a1a;
-  --color-primary: #feb6c1;
-  --color-primary-dark: #e895a0;
-  --color-primary-light: #ffd4dc;
-  --color-secondary: #2d2d2d;
-  --color-text-light: #666666;
-  --color-bg-light: #fafafa;
+  --color-primary: #5C3D2E;
+  --color-primary-dark: #3E2723;
+  --color-primary-light: #D7CCC8;
+  --color-accent: #C9A96E;
+  --color-accent-light: #E8D5B0;
+  --color-secondary: #1A1A1A;
+  --color-text-light: #6D6D6D;
+  --color-bg-light: #FAF6F0;
+  --color-bg-dark: #1B3A2D;
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Poppins', sans-serif;
 }
@@ -28,6 +31,6 @@ h1, h2, h3, h4 {
 }
 
 ::selection {
-  background-color: var(--color-primary-light);
+  background-color: var(--color-accent-light);
   color: var(--color-foreground);
 }

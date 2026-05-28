@@ -4,9 +4,9 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "SINRORA | Premium Perfume OEM & Custom Fragrance Manufacturer",
+  title: "SINRORA | Premium Cigar Humidor & Case OEM Manufacturer",
   description:
-    "Professional Perfume OEM/ODM Manufacturer - Custom Fragrance Manufacturing for Bold Brands. Original Inspired Scents with Low MOQ and Fast Sampling.",
+    "Professional Cigar Humidor & Case OEM/ODM Manufacturer - Custom Cedar Humidors, Leather Cases & Travel Tubes for Cigar Brands Worldwide. Low MOQ, Fast Sampling.",
 };
 
 export default function RootLayout({
