@@ -546,3 +546,170 @@ output: "standalone"   // 这是给 Docker / VPS 自托管用的
 ---
 
 > **总结一句话**：用 Next.js 把网站"编译"成静态 HTML 文件 → 丢到 Cloudflare Pages（永久免费 + 全球 CDN + 无限带宽）→ 域名 $10/年。**年成本 ¥76，零服务器、零数据库、零维护、秒开。** 外贸 B2B 独立站本该如此简单。
+
+---
+
+## 📬 询盘表单邮件发送功能
+
+### 问题：静态站没有后端，表单怎么发邮件？
+
+传统网站（WordPress 等）的表单提交流程：
+
+```
+用户填表 → 提交到服务器 → 服务器运行 PHP/Node 代码 → 调用 SMTP 发邮件 → 邮件到达你的收件箱
+```
+
+但我们的网站是 **纯静态站**（`output: 'export'`），没有服务器，没有后端代码，无法直接发邮件。所以之前的表单是"假的"——点提交只是切换了 UI 状态，数据直接丢了。
+
+### 解决方案：Web3Forms（免费，零后端）
+
+**Web3Forms** 是一个免费的表单转发服务，专门为静态站设计：
+
+```
+用户填表 → 浏览器直接发 fetch 请求到 Web3Forms API → Web3Forms 服务器转发邮件到你的邮箱
+```
+
+**核心原理**：我们不需要自己的服务器，Web3Forms 就是那个"中间人"——它接收表单数据，帮你发邮件。
+
+### 为什么选 Web3Forms？
+
+| 维度 | Web3Forms | Formspree | EmailJS | 自建后端 |
+|------|-----------|-----------|---------|---------|
+| **免费额度** | 250条/月 | 50条/月 | 200条/月 | 无限（但需服务器） |
+| **是否需要后端** | ❌ 不需要 | ❌ 不需要 | ❌ 不需要 | ✅ 需要 |
+| **是否需要注册** | ✅ 只需邮箱 | ✅ 需注册 | ✅ 需注册 | ❌ 自己搭建 |
+| **是否需要信用卡** | ❌ | ❌ | ❌ | 视服务商 |
+| **垃圾邮件防护** | ✅ hCaptcha | ✅ reCAPTCHA | ❌ 需自行实现 | 需自行实现 |
+| **邮件到达率** | 高 | 高 | 中 | 取决于 SMTP 配置 |
+| **适合场景** | 静态站 B2B 询盘 | 静态站表单 | 需自定义模板 | 复杂业务逻辑 |
+
+**外贸 B2B 场景**：每月 250 条询盘绰绰有余（大多数 SOHO 每月也就几十条询盘）。
+
+### 配置步骤（3 分钟搞定）
+
+#### Step 1：获取 Access Key
+
+1. 打开 https://web3forms.com
+2. 在输入框中填入你的接收邮箱（如 `jarvis@sinrora.com`）
+3. 点击 **"Create Access Key"**
+4. 去邮箱查收确认邮件，点击确认链接
+5. 你会收到一个 Access Key（一串长字符串）
+
+#### Step 2：填入代码
+
+打开 `src/app/contact/page.tsx`，找到第 6 行：
+
+```tsx
+const WEB3FORMS_KEY = "YOUR_ACCESS_KEY_HERE";
+```
+
+把 `YOUR_ACCESS_KEY_HERE` 替换为你获取的 Access Key：
+
+```tsx
+const WEB3FORMS_KEY = "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6";
+```
+
+#### Step 3：部署测试
+
+```bash
+git add .
+git commit -m "feat: enable email form with Web3Forms"
+git push
+```
+
+等 Cloudflare Pages 构建完成后，访问网站填写表单测试。你应该会在邮箱收到询盘邮件！
+
+### 代码实现详解
+
+#### 核心代码（contact/page.tsx）
+
+```tsx
+async function handleSubmit(e: React.FormEvent) {
+  e.preventDefault();           // 阻止默认表单提交（刷新页面）
+  setSubmitting(true);          // 显示加载状态
+  setError("");                 // 清空之前的错误
+
+  try {
+    // 关键：用 fetch 发送 POST 请求到 Web3Forms API
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",  // 告诉服务器我们发的是 JSON
+        Accept: "application/json",           // 告诉服务器我们期望返回 JSON
+      },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,           // 你的密钥（验证身份）
+        name: formData.name,                  // 客户姓名
+        email: formData.email,                // 客户邮箱
+        company: formData.company,            // 公司名
+        phone: formData.phone,                // 电话/WhatsApp
+        product_type: formData.productType,   // 产品类型
+        message: formData.message,            // 留言内容
+        subject: `New Inquiry from ${formData.name}`,  // 邮件标题
+        from_name: "SINRORA Website",         // 发件人名称
+      }),
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      setSubmitted(true);       // 显示成功页面
+    } else {
+      setError("Something went wrong...");  // 显示错误
+    }
+  } catch {
+    setError("Network error...");  // 网络错误（断网等）
+  } finally {
+    setSubmitting(false);         // 无论成功失败，都关闭加载状态
+  }
+}
+```
+
+#### 数据流图
+
+```
+┌─────────────┐     POST JSON      ┌──────────────┐     SMTP 邮件     ┌─────────────┐
+│  客户浏览器  │ ──────────────────→ │  Web3Forms   │ ───────────────→ │  你的邮箱    │
+│  (填表单)    │  access_key + 数据  │  API 服务器   │  转发询盘内容    │  (收询盘)    │
+└─────────────┘                     └──────────────┘                   └─────────────┘
+```
+
+#### UI 状态管理
+
+```
+3 种状态：
+1. idle（默认）    → 显示表单，按钮显示 "SEND INQUIRY"
+2. submitting（发送中）→ 按钮禁用 + 旋转图标 + 文字变 "SENDING..."
+3. submitted（已发送）→ 表单消失，显示 "Thank You!" 成功页面
+
+错误处理：
+- 网络错误 → 红色提示 "Network error..."
+- API 错误 → 红色提示 "Something went wrong..."
+```
+
+### 安全注意事项
+
+1. **Access Key 是公开的**：因为代码运行在客户端浏览器，Access Key 会出现在构建后的 JS 文件中。这是 Web3Forms 的设计——Key 本身不是密码，它只是一个标识符，Web3Forms 通过邮箱验证来确保只有你能收到邮件。
+2. **垃圾邮件防护**：Web3Forms 内置 hCaptcha。如果垃圾询盘过多，可以在 Web3Forms 后台开启 hCaptcha 验证。
+3. **速率限制**：免费版限制 250 条/月，足够 B2B 场景使用。
+
+### 进阶：开启 hCaptcha 防垃圾
+
+如果收到垃圾询盘，可以在 Web3Forms 后台开启 hCaptcha，然后在代码中添加：
+
+```tsx
+// 在 form 中添加隐藏的 hCaptcha 组件
+<div className="h-captcha" data-captcha="true"></div>
+<script src="https://web3forms.com/dist/captcha.js" defer></script>
+```
+
+### 常见问题
+
+**Q：Access Key 暴露在前端代码中，安全吗？**
+A：Web3Forms 的 Access Key 不是密码，它只是一个路由标识——告诉 Web3Forms "这封邮件发到哪个邮箱"。真正的安全验证是通过你注册时的邮箱确认。即使别人拿到你的 Key，他们也只能往你的邮箱发邮件，不能做其他事。
+
+**Q：250 条/月够用吗？**
+A：对于 B2B 外贸站来说完全够用。大多数 SOHO 每月收到的真实询盘在 20-100 条之间。如果真的超了，说明你的网站流量非常好，这时候升级到付费版（$8/月无限条）也是值得的。
+
+**Q：邮件会进垃圾箱吗？**
+A：Web3Forms 使用专业的 SMTP 服务发送邮件，到达率很高。首次收到邮件时，建议将发件人加入通讯录，避免被邮箱过滤。

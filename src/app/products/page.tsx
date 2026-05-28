@@ -4,9 +4,9 @@ import Link from "next/link";
 const allCategories = [
   { key: "all", label: "All Products" },
   { key: "perfume", label: "Perfume & Fragrance" },
+  { key: "personal-care", label: "Personal Care" },
   { key: "makeup", label: "Makeup" },
   { key: "skincare", label: "Skincare" },
-  { key: "personal-care", label: "Personal Care" },
   { key: "makeup-tools", label: "Makeup Tools & Accessories" },
   { key: "press-on-nails", label: "Press on Nails" },
 ];
@@ -20,13 +20,15 @@ const productItems = [
   { name: "Unisex Fragrance - Clean Musk", cat: "perfume", desc: "Modern 50ml unisex scent with white musk & linen notes. Gender-neutral positioning.", moq: "500 pcs", emoji: "✨" },
   { name: "Home Diffuser - Lavender Fields", cat: "perfume", desc: "200ml reed diffuser with natural essential oils. 60-90 day fragrance release.", moq: "500 pcs", emoji: "🏠" },
   { name: "Scented Candle - Rose Garden", cat: "perfume", desc: "Premium soy wax candle 180g. Clean burn up to 40 hours. Gift-ready packaging.", moq: "1000 pcs", emoji: "🕯️" },
-  { name: "Foundation - Matte Finish", cat: "makeup", desc: "Full coverage liquid foundation with SPF30. Available in 12 shades.", moq: "3000 pcs", emoji: "🪞" },
-  { name: "Lipstick - Velvet Matte", cat: "makeup", desc: "Long-wearing matte lipstick with vitamin E. 20 trendy shades available.", moq: "3000 pcs", emoji: "💋" },
-  { name: "Eyeshadow Palette - Sunset Glow", cat: "makeup", desc: "12-color eyeshadow palette with shimmer & matte finishes. Highly pigmented.", moq: "2000 pcs", emoji: "🎨" },
-  { name: "Mascara - Volume & Length", cat: "makeup", desc: "Smudge-proof mascara with curved brush. 24-hour wear formula.", moq: "5000 pcs", emoji: "👁️" },
+  { name: "Argan Oil Hair Serum", cat: "personal-care", desc: "Nourishing 50ml hair serum with Moroccan argan oil. Frizz control & shine boost.", moq: "1000 pcs", emoji: "💇" },
+  { name: "Keratin Shampoo & Conditioner Set", cat: "personal-care", desc: "Professional 500ml keratin-infused hair care duo. Smoothing & repairing formula.", moq: "500 pcs", emoji: "🧴" },
+  { name: "Whitening Toothpaste", cat: "personal-care", desc: "Premium 100g whitening toothpaste with activated charcoal. Enamel-safe formula.", moq: "3000 pcs", emoji: "🦷" },
+  { name: "Electric Sonic Toothbrush", cat: "personal-care", desc: "Rechargeable sonic toothbrush with 5 modes. 40,000 vibrations/min. IPX7 waterproof.", moq: "500 pcs", emoji: "⚡" },
+  { name: "LED Facial Mask", cat: "personal-care", desc: "7-color LED photon therapy mask. Anti-aging, acne treatment & skin rejuvenation.", moq: "200 pcs", emoji: "💡" },
+  { name: "Scalp Massager Shampoo Brush", cat: "personal-care", desc: "Silicone scalp massager for hair growth stimulation. Ergonomic grip design.", moq: "2000 pcs", emoji: "💆" },
 ];
 
-const comingSoonCategories = ["skincare", "personal-care", "makeup-tools", "press-on-nails"];
+const comingSoonCategories = ["makeup", "skincare", "makeup-tools", "press-on-nails"];
 
 export default function ProductsPage() {
   return (
@@ -88,11 +90,11 @@ export default function ProductsPage() {
             </div>
           </div>
 
-          <div id="makeup" className="mb-20">
-            <h2 className="text-[32px] mb-3 text-foreground">Makeup</h2>
-            <p className="text-text-light mb-10 font-light">Professional makeup lines with custom formulation and packaging</p>
+          <div id="personal-care" className="mb-20">
+            <h2 className="text-[32px] mb-3 text-foreground">Personal Care</h2>
+            <p className="text-text-light mb-10 font-light">Hair care, oral care & beauty devices — expanding your brand beyond fragrance</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {productItems.filter(p => p.cat === "makeup").map((p, i) => (
+              {productItems.filter(p => p.cat === "personal-care").map((p, i) => (
                 <div key={i} className="bg-white rounded-[20px] overflow-hidden hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] transition-all duration-300 shadow-[0_2px_10px_rgba(254,182,193,0.15)] border border-gray-50">
                   <div className="aspect-square bg-gradient-to-br from-primary-light/30 to-primary-light/10 flex items-center justify-center text-6xl">
                     {p.emoji}

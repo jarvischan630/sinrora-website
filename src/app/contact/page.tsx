@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Send, Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
+import { Send, Phone, Mail, MapPin, Clock, MessageCircle, Loader2, AlertCircle } from "lucide-react";
+
+const WEB3FORMS_KEY = "c32e802c-71a0-4a7b-8c16-b077339bf196";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -13,10 +15,46 @@ export default function ContactPage() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError("");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          product_type: formData.productType,
+          message: formData.message,
+          subject: `New Inquiry from ${formData.name} - ${formData.company || "No Company"}`,
+          from_name: "SINRORA Website",
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        setError("Something went wrong. Please try again or contact us directly via email.");
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
@@ -59,6 +97,12 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    {error && (
+                      <div className="flex items-center gap-3 bg-red-50 border border-red-200 text-red-700 px-5 py-4 rounded-xl text-sm">
+                        <AlertCircle size={18} className="shrink-0" />
+                        {error}
+                      </div>
+                    )}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-medium text-foreground mb-2">Your Name *</label>
@@ -123,7 +167,9 @@ export default function ContactPage() {
                         <option value="perfume-oil">Concentrated Perfume Oil</option>
                         <option value="body-mist">Body Mist & Splash</option>
                         <option value="home-fragrance">Home Fragrance</option>
-                        <option value="makeup">Makeup Products</option>
+                        <option value="hair-care">Hair Care</option>
+                        <option value="oral-care">Oral Care</option>
+                        <option value="care-devices">Care Devices</option>
                         <option value="custom">Custom / Other</option>
                       </select>
                     </div>
@@ -141,9 +187,18 @@ export default function ContactPage() {
                     </div>
                     <button
                       type="submit"
-                      className="bg-gradient-to-r from-primary to-primary-dark text-white px-10 py-4 rounded-full font-semibold text-sm hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(254,182,193,0.3)] transition-all flex items-center gap-2"
+                      disabled={submitting}
+                      className="bg-gradient-to-r from-primary to-primary-dark text-white px-10 py-4 rounded-full font-semibold text-sm hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(254,182,193,0.3)] transition-all flex items-center gap-2 disabled:opacity-60 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
                     >
-                      <Send size={16} /> SEND INQUIRY
+                      {submitting ? (
+                        <>
+                          <Loader2 size={16} className="animate-spin" /> SENDING...
+                        </>
+                      ) : (
+                        <>
+                          <Send size={16} /> SEND INQUIRY
+                        </>
+                      )}
                     </button>
                   </form>
                 )}
@@ -154,13 +209,13 @@ export default function ContactPage() {
               <div className="bg-white rounded-[20px] p-8 shadow-[0_2px_10px_rgba(254,182,193,0.15)]">
                 <h3 className="text-xl mb-6 text-foreground" style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 600 }}>Quick Contact</h3>
                 <div className="space-y-5">
-                  <a href="mailto:info@sinrora.com" className="flex items-center gap-4 text-foreground hover:text-primary transition-colors">
+                  <a href="mailto:jarvis@sinrora.com" className="flex items-center gap-4 text-foreground hover:text-primary transition-colors">
                     <div className="w-12 h-12 bg-primary-light/30 rounded-full flex items-center justify-center shrink-0">
                       <Mail size={18} className="text-primary" />
                     </div>
                     <div>
                       <div className="text-xs text-text-light">Email</div>
-                      <div className="text-sm font-medium">info@sinrora.com</div>
+                      <div className="text-sm font-medium">jarvis@sinrora.com</div>
                     </div>
                   </a>
                   <a href="tel:+8613800138000" className="flex items-center gap-4 text-foreground hover:text-primary transition-colors">
@@ -169,10 +224,10 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <div className="text-xs text-text-light">Phone</div>
-                      <div className="text-sm font-medium">+86 138 0013 8000</div>
+                      <div className="text-sm font-medium">+86 136 1013 1362</div>
                     </div>
                   </a>
-                  <a href="https://wa.me/8613800138000" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-foreground hover:text-primary transition-colors">
+                  <a href="https://wa.me/8613610131362" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-foreground hover:text-primary transition-colors">
                     <div className="w-12 h-12 bg-[#25D366]/10 rounded-full flex items-center justify-center shrink-0">
                       <MessageCircle size={18} className="text-[#25D366]" />
                     </div>

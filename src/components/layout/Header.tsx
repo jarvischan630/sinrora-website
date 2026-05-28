@@ -27,23 +27,23 @@ const productCategories = [
     ],
   },
   {
+    title: "Personal Care",
+    href: "/products?cat=personal-care",
+    highlight: true,
+    subcategories: [
+      { title: "Hair Care", href: "/products?cat=hair-care" },
+      { title: "Oral Care", href: "/products?cat=oral-care" },
+      { title: "Care Devices", href: "/products?cat=care-devices" },
+    ],
+  },
+  {
     title: "Makeup",
     href: "/products?cat=makeup",
-    subcategories: [
-      { title: "Face", href: "/products?cat=makeup-face" },
-      { title: "Eye", href: "/products?cat=makeup-eye" },
-      { title: "Lip Collections", href: "/products?cat=makeup-lip" },
-      { title: "Others", href: "/products?cat=makeup-others" },
-    ],
+    comingSoon: true,
   },
   {
     title: "Skincare",
     href: "/products?cat=skincare",
-    comingSoon: true,
-  },
-  {
-    title: "Personal Care",
-    href: "/products?cat=personal-care",
     comingSoon: true,
   },
   {
@@ -80,11 +80,11 @@ export function Header() {
       <div className="hidden md:block bg-white border-b border-gray-100 py-2.5 text-[13px]">
         <div className="container mx-auto px-5 flex justify-between items-center">
           <div className="flex items-center gap-5 text-text-light">
-            <a href="mailto:info@sinrora.com" className="hover:text-primary transition-colors">
-              info@sinrora.com
+            <a href="mailto:jarvis@sinrora.com" className="hover:text-primary transition-colors">
+              jarvis@sinrora.com
             </a>
             <a href="tel:+8613800138000" className="hover:text-primary transition-colors">
-              +86 138 0013 8000
+              +86 136 1013 1362
             </a>
           </div>
           <div className="flex items-center gap-4">
