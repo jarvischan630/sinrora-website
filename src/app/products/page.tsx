@@ -1,223 +1,147 @@
-"use client";
-
-import { useState } from "react";
+import { CheckCircle2, Filter } from "lucide-react";
 import Link from "next/link";
 
 const allCategories = [
   { key: "all", label: "All Products" },
-  { key: "humidors", label: "Cigar Humidors" },
-  { key: "cases", label: "Cigar Cases & Tubes" },
-  { key: "custom-engraved", label: "Custom Engraved" },
-  { key: "cabinets", label: "Humidor Cabinets" },
-  { key: "accessories", label: "Cigar Accessories" },
+  { key: "perfume", label: "Perfume & Fragrance" },
+  { key: "makeup", label: "Makeup" },
+  { key: "skincare", label: "Skincare" },
+  { key: "personal-care", label: "Personal Care" },
+  { key: "makeup-tools", label: "Makeup Tools & Accessories" },
+  { key: "press-on-nails", label: "Press on Nails" },
 ];
 
-const productsData = [
-  {
-    name: "Classic Desktop Humidor",
-    category: "humidors",
-    price: "$25 - $85",
-    moq: "20 pcs",
-    desc: "Spanish cedar-lined desktop humidor with glass top, hygrometer & humidifier. Holds 25-50 cigars.",
-    emoji: "🪵",
-    features: ["Spanish Cedar", "Glass Top", "Hygrometer"],
-  },
-  {
-    name: "Premium Leather Case",
-    category: "cases",
-    price: "$8 - $35",
-    moq: "30 pcs",
-    desc: "Genuine leather 3-finger cigar case with cedar lining. Hand-stitched, custom embossing available.",
-    emoji: "💼",
-    features: ["Genuine Leather", "Cedar Lined", "Embossing"],
-  },
-  {
-    name: "Travel Humidor Box",
-    category: "humidors",
-    price: "$15 - $45",
-    moq: "20 pcs",
-    desc: "Compact travel humidor with secure latch. Holds 5-10 cigars. Keeps fresh for 7-14 days.",
-    emoji: "✈️",
-    features: ["Compact", "Secure Latch", "7-14 Day Fresh"],
-  },
-  {
-    name: "Aluminum Cigar Tube",
-    category: "cases",
-    price: "$3 - $12",
-    moq: "50 pcs",
-    desc: "Sleek aluminum tube with cedar lining. Single & double options. Crush-proof, pocket-friendly.",
-    emoji: "🫙",
-    features: ["Aluminum", "Cedar Lined", "Crush-proof"],
-  },
-  {
-    name: "Custom Engraved Humidor",
-    category: "custom-engraved",
-    price: "$45 - $150",
-    moq: "20 pcs",
-    desc: "Personalized humidor with laser engraving. Names, logos, dates. Perfect groomsmen & corporate gifts.",
-    emoji: "✨",
-    features: ["Laser Engraving", "Custom Logo", "Gift Box"],
-  },
-  {
-    name: "Glass Top Display Humidor",
-    category: "humidors",
-    price: "$55 - $120",
-    moq: "15 pcs",
-    desc: "Elegant glass-top display humidor. Showcase your collection. Cedar dividers & adjustable trays.",
-    emoji: "🏛️",
-    features: ["Glass Display", "Cedar Dividers", "Adjustable"],
-  },
-  {
-    name: "Cabinet Humidor",
-    category: "cabinets",
-    price: "$200 - $4,000",
-    moq: "5 pcs",
-    desc: "Large capacity cabinet humidors. 200-2000+ cigars. Digital climate control. Furniture-grade finish.",
-    emoji: "🗄️",
-    features: ["200-2000+ Capacity", "Digital Control", "Furniture Grade"],
-  },
-  {
-    name: "Cigar Cutter & Lighter Set",
-    category: "accessories",
-    price: "$5 - $25",
-    moq: "50 pcs",
-    desc: "Premium guillotine cutter & torch lighter combo. Custom branding available. Gift box packaging.",
-    emoji: "🔧",
-    features: ["Guillotine Cut", "Torch Lighter", "Gift Box"],
-  },
-  {
-    name: "PU Leather Finger Case",
-    category: "cases",
-    price: "$3 - $10",
-    moq: "50 pcs",
-    desc: "Affordable PU leather 2-5 finger cases. Multiple color options. Custom logo embossing.",
-    emoji: "👜",
-    features: ["PU Leather", "2-5 Finger", "Multi Color"],
-  },
-  {
-    name: "Personalized Leather Tube",
-    category: "custom-engraved",
-    price: "$12 - $30",
-    moq: "30 pcs",
-    desc: "Leather-wrapped aluminum tube with custom engraving. Premium feel, personal touch.",
-    emoji: "🎯",
-    features: ["Leather Wrap", "Engraving", "Premium Feel"],
-  },
-  {
-    name: "Crystal Ashtray",
-    category: "accessories",
-    price: "$8 - $35",
-    moq: "30 pcs",
-    desc: "Hand-cut crystal ashtray with 4 rests. Custom etching available. Luxury presentation piece.",
-    emoji: "💎",
-    features: ["Crystal", "4 Rests", "Custom Etching"],
-  },
-  {
-    name: "Walk-in Humidor Cabinet",
-    category: "cabinets",
-    price: "$1,500 - $4,000",
-    moq: "2 pcs",
-    desc: "Full walk-in humidor room solution. Commercial grade. Complete climate system installation.",
-    emoji: "🏠",
-    features: ["Walk-in Size", "Commercial Grade", "Full Install"],
-  },
+const productItems = [
+  { name: "Eau de Parfum - Floral Bouquet", cat: "perfume", desc: "Premium 50ml EDP with rose, jasmine & peony notes. Long-lasting 8-12 hour formula.", moq: "500 pcs", emoji: "🌸" },
+  { name: "Eau de Toilette - Fresh Citrus", cat: "perfume", desc: "Refreshing 100ml EDT with bergamot, lemon & green tea. Perfect for daily wear.", moq: "500 pcs", emoji: "🍋" },
+  { name: "Perfume Oil - Oud Collection", cat: "perfume", desc: "Concentrated 12ml rollerball perfume oil. Alcohol-free, long-lasting oriental scent.", moq: "1000 pcs", emoji: "🫧" },
+  { name: "Body Mist - Vanilla Dream", cat: "perfume", desc: "Light 200ml body splash with vanilla & coconut. Perfect for younger demographics.", moq: "1000 pcs", emoji: "💦" },
+  { name: "Men's Cologne - Woody Intense", cat: "perfume", desc: "Bold 100ml men's fragrance with cedar, sandalwood & leather notes.", moq: "500 pcs", emoji: "🌲" },
+  { name: "Unisex Fragrance - Clean Musk", cat: "perfume", desc: "Modern 50ml unisex scent with white musk & linen notes. Gender-neutral positioning.", moq: "500 pcs", emoji: "✨" },
+  { name: "Home Diffuser - Lavender Fields", cat: "perfume", desc: "200ml reed diffuser with natural essential oils. 60-90 day fragrance release.", moq: "500 pcs", emoji: "🏠" },
+  { name: "Scented Candle - Rose Garden", cat: "perfume", desc: "Premium soy wax candle 180g. Clean burn up to 40 hours. Gift-ready packaging.", moq: "1000 pcs", emoji: "🕯️" },
+  { name: "Foundation - Matte Finish", cat: "makeup", desc: "Full coverage liquid foundation with SPF30. Available in 12 shades.", moq: "3000 pcs", emoji: "🪞" },
+  { name: "Lipstick - Velvet Matte", cat: "makeup", desc: "Long-wearing matte lipstick with vitamin E. 20 trendy shades available.", moq: "3000 pcs", emoji: "💋" },
+  { name: "Eyeshadow Palette - Sunset Glow", cat: "makeup", desc: "12-color eyeshadow palette with shimmer & matte finishes. Highly pigmented.", moq: "2000 pcs", emoji: "🎨" },
+  { name: "Mascara - Volume & Length", cat: "makeup", desc: "Smudge-proof mascara with curved brush. 24-hour wear formula.", moq: "5000 pcs", emoji: "👁️" },
 ];
+
+const comingSoonCategories = ["skincare", "personal-care", "makeup-tools", "press-on-nails"];
 
 export default function ProductsPage() {
-  const [activeCategory, setActiveCategory] = useState("all");
-
-  const filteredProducts =
-    activeCategory === "all"
-      ? productsData
-      : productsData.filter((p) => p.category === activeCategory);
-
   return (
     <main className="min-h-screen">
-      <section className="bg-gradient-to-br from-primary to-primary-dark py-24 text-white">
-        <div className="container mx-auto px-5 text-center">
-          <h1 className="text-[48px] mb-5">Our Cigar Collection</h1>
-          <p className="text-xl opacity-95 font-light max-w-[700px] mx-auto">
-            Premium humidors, cases &amp; accessories — OEM/ODM solutions for your brand
-          </p>
+      <section className="relative py-28 bg-gradient-to-br from-primary-light/20 to-white overflow-hidden">
+        <div className="absolute top-10 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="container mx-auto px-5 relative z-10">
+          <div className="text-center">
+            <h1 className="text-[48px] mb-5 text-foreground">Our Products</h1>
+            <p className="text-lg text-text-light max-w-[700px] mx-auto font-light">
+              Explore our complete range of beauty &amp; fragrance products. OEM &amp; ODM services available for all categories.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-16">
         <div className="container mx-auto px-5">
-          <div className="flex flex-wrap justify-center gap-3 mb-14">
+          <div className="flex flex-wrap gap-3 justify-center mb-16">
             {allCategories.map((cat) => (
-              <button
+              <a
                 key={cat.key}
-                onClick={() => setActiveCategory(cat.key)}
-                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all ${
-                  activeCategory === cat.key
-                    ? "bg-primary text-white shadow-[0_4px_15px_rgba(92,61,46,0.3)]"
-                    : "bg-bg-light text-foreground hover:bg-primary-light hover:text-primary-dark"
+                href={`#${cat.key}`}
+                className={`px-6 py-2.5 rounded-full text-sm font-medium border transition-all ${
+                  cat.key === "all"
+                    ? "bg-primary text-white border-primary"
+                    : comingSoonCategories.includes(cat.key)
+                    ? "bg-gray-50 text-text-light border-gray-200 cursor-default"
+                    : "bg-white text-foreground border-gray-200 hover:border-primary hover:text-primary"
                 }`}
               >
                 {cat.label}
-              </button>
+                {comingSoonCategories.includes(cat.key) && (
+                  <span className="ml-1 text-[10px] italic">Coming Soon</span>
+                )}
+              </a>
             ))}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {filteredProducts.map((product, i) => (
-              <div
-                key={i}
-                className="bg-white rounded-[20px] overflow-hidden hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] transition-all duration-300 shadow-[0_2px_10px_rgba(92,61,46,0.08)] border border-transparent hover:border-accent-light"
-              >
-                <div className="aspect-square bg-gradient-to-br from-accent-light/20 to-primary-light/20 flex items-center justify-center text-6xl">
-                  {product.emoji}
+          <div id="all" className="mb-20">
+            <h2 className="text-[32px] mb-3 text-foreground">Perfume &amp; Fragrance</h2>
+            <p className="text-text-light mb-10 font-light">Our flagship category — premium fragrances crafted by master perfumers</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {productItems.filter(p => p.cat === "perfume").map((p, i) => (
+                <div key={i} className="bg-white rounded-[20px] overflow-hidden hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] transition-all duration-300 shadow-[0_2px_10px_rgba(254,182,193,0.15)] border border-gray-50">
+                  <div className="aspect-square bg-gradient-to-br from-primary-light/30 to-primary-light/10 flex items-center justify-center text-6xl">
+                    {p.emoji}
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-[15px] font-semibold mb-2 text-foreground" style={{ fontFamily: "'Poppins', sans-serif" }}>{p.name}</h3>
+                    <p className="text-[13px] text-text-light leading-relaxed mb-3">{p.desc}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-[12px] text-primary font-semibold">MOQ: {p.moq}</span>
+                      <Link href="/contact" className="text-[12px] text-primary font-semibold hover:underline">Inquire →</Link>
+                    </div>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-semibold text-accent uppercase tracking-wider">
-                      {allCategories.find((c) => c.key === product.category)?.label}
-                    </span>
-                    <span className="text-xs text-text-light">MOQ: {product.moq}</span>
+              ))}
+            </div>
+          </div>
+
+          <div id="makeup" className="mb-20">
+            <h2 className="text-[32px] mb-3 text-foreground">Makeup</h2>
+            <p className="text-text-light mb-10 font-light">Professional makeup lines with custom formulation and packaging</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {productItems.filter(p => p.cat === "makeup").map((p, i) => (
+                <div key={i} className="bg-white rounded-[20px] overflow-hidden hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] transition-all duration-300 shadow-[0_2px_10px_rgba(254,182,193,0.15)] border border-gray-50">
+                  <div className="aspect-square bg-gradient-to-br from-primary-light/30 to-primary-light/10 flex items-center justify-center text-6xl">
+                    {p.emoji}
                   </div>
-                  <h3 className="text-[17px] font-semibold mb-2 text-foreground" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                    {product.name}
-                  </h3>
-                  <p className="text-sm text-text-light leading-relaxed mb-3">{product.desc}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {product.features.map((f, j) => (
-                      <span key={j} className="text-[11px] px-2.5 py-1 bg-accent-light/20 text-primary-dark rounded-full font-medium">
-                        {f}
-                      </span>
-                    ))}
+                  <div className="p-6">
+                    <h3 className="text-[15px] font-semibold mb-2 text-foreground" style={{ fontFamily: "'Poppins', sans-serif" }}>{p.name}</h3>
+                    <p className="text-[13px] text-text-light leading-relaxed mb-3">{p.desc}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-[12px] text-primary font-semibold">MOQ: {p.moq}</span>
+                      <Link href="/contact" className="text-[12px] text-primary font-semibold hover:underline">Inquire →</Link>
+                    </div>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-lg font-bold text-primary">{product.price}</span>
-                    <Link
-                      href="/contact"
-                      className="text-sm font-semibold text-accent hover:text-primary-dark transition-colors"
-                    >
-                      Get Quote →
-                    </Link>
-                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {comingSoonCategories.map((catKey) => {
+            const cat = allCategories.find(c => c.key === catKey);
+            if (!cat) return null;
+            return (
+              <div key={catKey} id={catKey} className="mb-16">
+                <h2 className="text-[32px] mb-3 text-foreground">{cat.label}</h2>
+                <div className="bg-bg-light rounded-[20px] p-16 text-center">
+                  <div className="text-6xl mb-6">🚀</div>
+                  <h3 className="text-2xl mb-3 text-foreground">Coming Soon</h3>
+                  <p className="text-text-light mb-6 max-w-md mx-auto font-light">
+                    Our {cat.label.toLowerCase()} collection is currently under development. Stay tuned for exciting new products!
+                  </p>
+                  <Link
+                    href="/contact"
+                    className="inline-block bg-gradient-to-r from-primary to-primary-dark text-white px-8 py-3 rounded-full text-sm font-semibold hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(254,182,193,0.3)] transition-all"
+                  >
+                    Notify Me When Available
+                  </Link>
                 </div>
               </div>
-            ))}
-          </div>
-
-          {filteredProducts.length === 0 && (
-            <div className="text-center py-20">
-              <p className="text-xl text-text-light">Products coming soon...</p>
-            </div>
-          )}
+            );
+          })}
         </div>
       </section>
 
-      <section className="py-20 bg-bg-light">
-        <div className="container mx-auto px-5 text-center">
-          <h2 className="text-[36px] mb-5 text-foreground">Can&apos;t Find What You Need?</h2>
-          <p className="text-lg text-text-light max-w-[600px] mx-auto mb-8 font-light">
-            We offer full custom OEM/ODM services. Tell us your vision and we&apos;ll bring it to life.
-          </p>
+      <section className="py-28 bg-gradient-to-r from-primary to-primary-dark text-white text-center">
+        <div className="container mx-auto px-5">
+          <h2 className="text-[44px] mb-5 text-white">Can&apos;t Find What You Need?</h2>
+          <p className="text-xl mb-10 opacity-95 font-light">We offer full custom OEM/ODM services. Tell us your vision and we&apos;ll make it happen.</p>
           <Link
             href="/contact"
-            className="inline-block bg-gradient-to-r from-primary to-primary-dark text-white px-10 py-4 rounded-full font-semibold hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(92,61,46,0.3)] transition-all"
+            className="inline-block bg-white text-primary px-12 py-4 rounded-full font-semibold text-base hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(0,0,0,0.2)] transition-all"
           >
             REQUEST CUSTOM PRODUCT
           </Link>
